@@ -3,9 +3,9 @@ list
 todo
 todo clean my room
 deadline do smth
-deadline do ma homework /by tonight?
+deadline do ma homework /by 01/12/2020 0700
 event take a nap?
-event take a nap /at asap
+event take a nap /at 01/12/2020 0800
 list
 done
 done 2

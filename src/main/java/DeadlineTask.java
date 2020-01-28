@@ -1,18 +1,23 @@
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+
 public class DeadlineTask extends Task {
 
-    private String by;
+    private LocalDateTime by;
 
-    public DeadlineTask(String description, String deadline) throws InvalidDukeFormatException {
+    public DeadlineTask(String description, String deadline) throws InvalidDukeFormatException, DateTimeParseException {
         super(description);
-        this.by = deadline;
 
         if (deadline.isEmpty()) {
             throw new InvalidDukeFormatException("Missing /by clause or missing by when!");
         }
+        this.by = LocalDateTime.parse(deadline, DateTimeFormatter.ofPattern("dd/MM/yyyy HHmm"));
     }
 
     @Override
     public String toString() {
-        return "[D]" + super.toString() + " (by: " + this.by + ")";
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("MMM d YYYY");
+        return "[D] " + super.toString() + " (by: " + formatter.format(this.by) + ")";
     }
 }
